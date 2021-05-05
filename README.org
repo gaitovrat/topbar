@@ -1,2 +1,4 @@
-# topbar
+#+TITLE: Topbar
+#+AUTHOR: Ratmir Gaitov
+
 Ubersicht topbar widget
