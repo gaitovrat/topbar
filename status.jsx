@@ -1,25 +1,28 @@
+import parse from "./lib/parse.jsx";
+import Error from "./lib/Error.jsx";
 import DateTime from "./lib/DateTime.jsx";
 import Battery from "./lib/Battery.jsx";
-import Error from "./lib/Error.jsx";
-import parse from "./lib/parse.jsx";
 import styles from "./lib/styles.jsx";
 
 const style = {
-  display: "grid",
-  padding: "12px",
-  borderRadius: "20px",
-  gridAutoFlow: "column",
-  gridGap: "20px",
-  position: "fixed",
-  overflow: "hidden",
-  right: "12px",
-  top: "12px",
-  background: styles.colors.bg,
-  fontFamily: styles.fontFamily,
-  fontSize: styles.fontSize,
-  lineHeight: styles.lineHeight,
-  fontWeight: styles.fontWeight
-};
+  root: {
+    backgroundColor: styles.colors.bg,
+    top: 0,
+    right: 0,
+    left: 0,
+    position: "fixed",
+    display: "flex",
+    flexDirection: "row-reverse"
+  },
+  box: {
+    backgroundColor: styles.colors.pink,
+    padding: "5px",
+    margin: "5px",
+    borderRadius: "5px",
+    color: styles.colors.white,
+    fontSize: styles.fontSize
+  }
+}
 
 export const refreshFrequency = 10000;
 
@@ -35,8 +38,10 @@ export const render = ({ output }) => {
     );
   }
   return (
-    <div style={style}>
-      <Battery output={data.battery} />
+    <div style={style.root}>
+      <div style={style.box}>
+        <Battery output={data.battery} />
+      </div>
       <DateTime output={data.datetime} />
     </div>
   );
